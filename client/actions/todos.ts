@@ -1,5 +1,5 @@
 import type { ThunkAction } from '../store'
-import type { Todo } from '../../common/interfaces'
+import type { Todo } from '../../models/todo'
 import * as API from '../apis/todos'
 
 export type TodoAction =

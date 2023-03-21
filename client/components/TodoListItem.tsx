@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Todo } from '../../common/interfaces'
+import { Todo } from '../../models/todo'
 import { deleteTodo, editTodo, toggleTodoStatus } from '../actions/todos'
 import { useAppDispatch } from '../hooks'
 

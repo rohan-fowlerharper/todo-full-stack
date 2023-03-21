@@ -1,8 +1,8 @@
-export interface CreateTodo {
+export interface TodoCreate {
   text: string
 }
 
-export interface Todo extends CreateTodo {
+export interface Todo extends TodoCreate {
   id: number
   completed: boolean
   createdAt: string

@@ -1,4 +1,4 @@
-import type { Todo } from '../../common/interfaces'
+import type { Todo } from '../../models/todo'
 
 import type { TodoAction } from '../actions/todos'
 

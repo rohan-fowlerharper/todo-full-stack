@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import type { Response } from 'express'
-import type { Todo } from '../../common/interfaces'
+import type { Todo } from '../../models/todo'
 
 const router = Router()
 

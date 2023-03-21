@@ -1,5 +1,5 @@
 import request from 'superagent'
-import type { Todo } from '../../common/interfaces'
+import type { Todo } from '../../models/todo'
 
 export async function getTodos(): Promise<Todo[]> {
   return request.get('/api/v1/todos').then((res) => res.body)
