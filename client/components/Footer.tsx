@@ -3,10 +3,9 @@ import { deleteCompletedTodos } from '../actions/todos'
 import { useAppDispatch, useAppSelector } from '../hooks'
 
 export default function Footer() {
-  const todosLeft =
-    useAppSelector(
-      (state) => state.todos.data?.filter((todo) => !todo.completed).length
-    ) ?? 0
+  const todosLeft = useAppSelector(
+    (state) => state.todos.data?.filter((todo) => !todo.completed).length ?? 0
+  )
   const dispatch = useAppDispatch()
 
   function handleClearCompleted() {
@@ -39,12 +38,12 @@ export default function Footer() {
 const toTitleCase = (s: string) => s.charAt(0).toUpperCase() + s.slice(1)
 
 function FilterButton({ label }: { label: Filter }) {
-  const { status } = useAppSelector((state) => state.filter)
+  const filter = useAppSelector((state) => state.filter)
   const dispatch = useAppDispatch()
 
   return (
     <button
-      className={status === label ? 'selected' : ''}
+      className={filter === label ? 'selected' : ''}
       onClick={() => dispatch(changeFilter(label))}
     >
       {toTitleCase(label)}

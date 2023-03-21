@@ -1,10 +1,6 @@
 import type { Filter, FilterAction } from '../actions/filter'
 
-type FilterState = { status: Filter }
-
-const initialState: FilterState = {
-  status: 'all',
-}
+const initialState: Filter = 'all'
 
 export default function filterReducer(
   state = initialState,
@@ -12,10 +8,7 @@ export default function filterReducer(
 ) {
   switch (action.type) {
     case 'SET_FILTER':
-      return {
-        ...state,
-        status: action.status,
-      }
+      return action.filter
     default:
       return state
   }

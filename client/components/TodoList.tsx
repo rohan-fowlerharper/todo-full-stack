@@ -3,7 +3,7 @@ import TodoListItem from './TodoListItem'
 
 export default function TodoList() {
   const { loading, error, data: todos } = useAppSelector((state) => state.todos)
-  const { status } = useAppSelector((state) => state.filter)
+  const filter = useAppSelector((state) => state.filter)
 
   if (loading) {
     return <p>Loading...</p>
@@ -14,9 +14,9 @@ export default function TodoList() {
   }
 
   let renderedTodos = todos
-  if (status === 'active') {
+  if (filter === 'active') {
     renderedTodos = todos.filter((todo) => !todo.completed)
-  } else if (status === 'completed') {
+  } else if (filter === 'completed') {
     renderedTodos = todos.filter((todo) => todo.completed)
   }
 
