@@ -12,8 +12,8 @@ export type TodoAction =
   | { type: 'FETCH_TODOS_ERROR'; error: string }
   | { type: 'FETCH_TODOS_LOADING' }
 
-export const addTodo = (text: string) => {
-  return (dispatch: (action: ThunkAction | TodoAction) => Promise<void>) => {
+export const addTodo = (text: string): ThunkAction => {
+  return (dispatch) => {
     return API.postTodo(text)
       .then((todo) => {
         dispatch({ type: 'ADD_TODO', todo })
@@ -26,8 +26,8 @@ export const addTodo = (text: string) => {
   }
 }
 
-export const getTodos = () => {
-  return (dispatch: (action: ThunkAction | TodoAction) => Promise<void>) => {
+export const getTodos = (): ThunkAction => {
+  return (dispatch) => {
     dispatch({ type: 'FETCH_TODOS_LOADING' })
     return API.getTodos()
       .then((todos) => {
@@ -41,8 +41,8 @@ export const getTodos = () => {
   }
 }
 
-export const deleteTodo = (id: number) => {
-  return (dispatch: (action: ThunkAction | TodoAction) => Promise<void>) => {
+export const deleteTodo = (id: number): ThunkAction => {
+  return (dispatch) => {
     return API.deleteTodo(id)
       .then(() => {
         dispatch({ type: 'DELETE_TODO', id })
@@ -54,12 +54,12 @@ export const deleteTodo = (id: number) => {
   }
 }
 
-export const toggleTodoStatus = (todo: Todo) => {
+export const toggleTodoStatus = (todo: Todo): ThunkAction => {
   const { completed, id } = todo
 
   const toggled = !completed
 
-  return (dispatch: (action: ThunkAction | TodoAction) => Promise<void>) => {
+  return (dispatch) => {
     return API.updateTodoStatus(id, toggled)
       .then((updatedTodo) => {
         dispatch({ type: 'UPDATE_TODO', todo: updatedTodo })
@@ -71,8 +71,8 @@ export const toggleTodoStatus = (todo: Todo) => {
   }
 }
 
-export const editTodo = (id: number, text: string) => {
-  return (dispatch: (action: ThunkAction | TodoAction) => Promise<void>) => {
+export const editTodo = (id: number, text: string): ThunkAction => {
+  return (dispatch) => {
     return API.updateTodoText(id, text)
       .then((updatedTodo) => {
         dispatch({ type: 'UPDATE_TODO', todo: updatedTodo })
@@ -84,8 +84,8 @@ export const editTodo = (id: number, text: string) => {
   }
 }
 
-export const deleteCompletedTodos = () => {
-  return (dispatch: (action: ThunkAction | TodoAction) => Promise<void>) => {
+export const deleteCompletedTodos = (): ThunkAction => {
+  return (dispatch) => {
     return API.deleteCompletedTodos()
       .then(() => {
         dispatch({ type: 'DELETE_COMPLETED_TODOS' })
